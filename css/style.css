@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@300;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+   font: 400 16px 'Noto Sans';
+}
+
+input, button {
+  font-family: 'Noto Sans';
+}
+
+.options {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.wrapper_option label {
+  user-select: none;
+}
+
+button {
+  margin-top: 30px;
+}
+
+#pass {
+  width: 250px;
+}
