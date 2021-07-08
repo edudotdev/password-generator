@@ -119,3 +119,12 @@ const generatePassword = (passwordLength, passwordOptions, passwordFunctions) =>
 btnGenerate.onclick = (e) => {
     generatePassword(passwordLength, passwordOptions, passwordFunctions);
 }
+
+////////////////////////////////////////////////////////////////
+
+const typed = new Typed('.typed', {
+    strings: ['******** *********', 'Password Generator'],
+    typeSpeed: 55,
+    startDelay: 1000,
+    backSpeed: 40
+})

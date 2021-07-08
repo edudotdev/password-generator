@@ -6,49 +6,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/normalize.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
   <title>Password Generate</title>
 </head>
 <body>
-  <header>
-    <h1>Password Generator</h1>
+  <header class='header'>
+    <h1><span class="typed"></span></h1>
   </header>
 
   <div class="generator">
     <div class="options">
-      <form id='form' action="" style="display: flex; flex-direction: column;">
+      <form id='form' class='form' action="">
         <div class="wrapper_input">
           <input type="text" id='pass' class="password">
-          <button id='copiar'>Copy</button>
+          <button id='copiar'>
+            <span class="material-icons">copy_all</span>
+          </button>
         </div>
 
         <div class="wrapper_range">
-          <input id='rango' type="range" min="4" max="20">
-          <p id="numberLength"></p>
+          <p id="numberLength" class='numberLength'></p>
+          <input id='rango' type="range" min="4" max="30">
         </div>
         
-        <div class="wrapper_option">
-          <label for="uppercaseLetters">Uppercase letters</label>
-          <input name='uppercaseLetters' type="checkbox" id="uppercaseLetters">
-        </div>
-        <div class="wrapper_option">
-          <label for="lowercaseLetters">Lowercase letters</label>
-          <input name="lowercaseLetters" type="checkbox" id="lowercaseLetters">
-        </div>
-        <div class="wrapper_option">
-          <label for="numbers">Numbers</label>
-          <input name='numbers' type="checkbox" id="numbers">
-        </div>
-        <div class="wrapper_option">
-          <label for="symbols">Symbols</label>
-          <input name="symbols" type="checkbox" id="symbols">
+        <div>
+          <div class="wrapper_option">
+            <label for="uppercaseLetters">Uppercase letters</label>
+            <input name='uppercaseLetters' type="checkbox" id="uppercaseLetters">
+          </div>
+          <div class="wrapper_option">
+            <label for="lowercaseLetters">Lowercase letters</label>
+            <input name="lowercaseLetters" type="checkbox" id="lowercaseLetters">
+          </div>
+          <div class="wrapper_option">
+            <label for="numbers">Numbers</label>
+            <input name='numbers' type="checkbox" id="numbers">
+          </div>
+          <div class="wrapper_option">
+            <label for="symbols">Symbols</label>
+            <input name="symbols" type="checkbox" id="symbols">
+          </div>
         </div>
 
-        <button id="btnGenerate">Generate</button>
+        <button id="btnGenerate" class='btnGenerator'>Generate</button>
       </form>
     </div>
-
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

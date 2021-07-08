@@ -1,5 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+:root {
+  --primary: rgb(37, 110, 245);
+  --secondary: rgba(37, 110, 245, .25);
+}
 
 * {
   margin: 0;
@@ -8,15 +14,16 @@
 }
 
 body {
-   font: 400 16px 'Noto Sans';
+   font: 400 16px Poppins;
 }
 
 input, button {
-  font-family: 'Noto Sans';
+  font-family: Poppins;
+  outline: none;
 }
 
 .options {
-  width: 400px;
+  width: 450px;
   margin: 0 auto;
 }
 
@@ -24,10 +31,171 @@ input, button {
   user-select: none;
 }
 
-button {
-  margin-top: 30px;
+.header {
+  display: grid;
+  place-items: center;
+
+  margin: 40px 0;
 }
 
-#pass {
-  width: 250px;
+.header h1 span{
+  font-size: calc(30px + 1vw);
+}
+
+.form {
+  display: grid;
+  gap: 20px;
+}
+
+.wrapper_input {
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  gap: 20px;
+}
+
+.wrapper_input  input {
+  text-align: center;
+  font: 400 20px poppins;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #1b1b1b;
+}
+
+.wrapper_input button {
+  display: grid;
+  place-items: center;
+  height: 50px;
+  background: var(--secondary);
+  border: none;
+  color: var(--primary);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform .4s ease;
+}.wrapper_input button:hover {
+  transform: translateY(-5px)
+}
+
+.wrapper_input button span {font-size: 24px;}
+
+.wrapper_range .numberLength {
+  text-align: center;
+  font: 400 28px Poppins;
+  color: var(--primary);
+}
+
+.wrapper_range input {
+  width: calc(100% - 10px);
+  margin: 20px 5px;
+  -webkit-appearance: none;
+  border-radius: 99px;
+}
+
+.wrapper_range input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+.wrapper_range input::focus {
+  outline: none; 
+}
+
+.wrapper_range input::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent; 
+  border-color: transparent;
+  color: transparent;
+}
+
+.wrapper_range input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  position: relative;
+  height: 16px;
+  width: 16px;
+  border-radius: 99px;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0px 0px 4px var(--primary);
+  margin-top: -3px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+.wrapper_range input::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ff0000;
+  cursor: pointer;
+}
+
+.wrapper_range input::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #aa0000;
+  cursor: pointer;
+}
+
+.wrapper_range input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: var(--primary);
+  border-radius: 99px;
+  border: none;
+  box-shadow: none;
+}
+
+.wrapper_range input::focus::-webkit-slider-runnable-track {
+  background: #e24d08;
+}
+
+.wrapper_range input::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #bb0000;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+.wrapper_range input::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+.wrapper_range input::-ms-fill-lower {
+  background: #acacac;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+.wrapper_range input:focus::-ms-fill-lower {
+  background: #ff0000;
+}
+.wrapper_range input::-ms-fill-upper {
+  background: #ec0000;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+.wrapper_range input:focus::-ms-fill-upper {
+  background: #db0808;
+}
+
+.btnGenerator {
+  padding: 10px;
+  font: 600 18px poppins;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: var(--primary)
 }
