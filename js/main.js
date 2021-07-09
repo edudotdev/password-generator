@@ -18,20 +18,15 @@ const numberLength = document.querySelector('#numberLength')
 const form = document.querySelector('#form')
 const copy = document.querySelector('#copiar')
 
-state.forEach(e => {
-    e.addEventListener('change', (e) => {
-        passwordOptions.set('uppercaseLetters', state[0].checked);
-        passwordOptions.set('lowercaseLetters', state[1].checked);
-        passwordOptions.set('numbers', state[2].checked);
-        passwordOptions.set('symbols', state[3].checked);
-    })
-})
-form.addEventListener('submit', (e) => {
-  e.preventDefault()
-})
-
 numberLength.innerHTML = range.value
 passwordLength = range.value
+
+const setConfig = () => {
+    passwordOptions.set('uppercaseLetters', state[0].checked);
+    passwordOptions.set('lowercaseLetters', state[1].checked);
+    passwordOptions.set('numbers', state[2].checked);
+    passwordOptions.set('symbols', state[3].checked);
+}
 
 const createTooltip = () => {
     if(tooltip){
@@ -50,25 +45,11 @@ const createTooltip = () => {
     }, 1000)
 }
 
-copiar.addEventListener('click', () => {
-  if(!txtPass.value) {
-    return
-  }
-  txtPass.focus();
-  document.execCommand('selectAll')
-  document.execCommand('copy');
-
-  createTooltip()
-  
-})
-
 const changePasswordLenght = (e) => {
     const value = e.target.value;
     numberLength.innerHTML = value;
     passwordLength = value;
 }
-
-range.addEventListener('input', changePasswordLenght)
 
 const generateRandomUppercaseLetter = () => {
     // 65 -> A
@@ -136,11 +117,34 @@ const generatePassword = (passwordLength, passwordOptions, passwordFunctions) =>
     txtPass.value = passwordArray.join('');
 }
 
+////////////////////////////////////////////////////////////////
+
+// Events
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+})
+
+copiar.addEventListener('click', () => {
+    if(!txtPass.value) {
+      return
+    }
+    txtPass.focus();
+    document.execCommand('selectAll')
+    document.execCommand('copy');   
+    createTooltip()
+})
+
 btnGenerate.onclick = (e) => {
+    setConfig()
     generatePassword(passwordLength, passwordOptions, passwordFunctions);
 }
 
+range.addEventListener('input', changePasswordLenght)
+
 ////////////////////////////////////////////////////////////////
+
+// TypedJS
 
 const typed = new Typed('.typed', {
     strings: ['p4§zW0rD_g3nErAt0R', 'Password Generator'],
