@@ -1,10 +1,12 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@300;500&display=swap');
+@import url(./responsive.css);
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
 
 :root {
-  --primary: rgb(37, 110, 245);
-  --secondary: rgba(37, 110, 245, .25);
+  --primary: #3772ff;
+  --secondary: #292d3d;
+  --secondary2: #e5eefd; 
+  --opacity: rgba(55, 114, 255, 1);
+  --radius: 10px;
 }
 
 * {
@@ -15,6 +17,7 @@
 
 body {
    font: 400 16px Poppins;
+   background: #1d2026;
 }
 
 input, button {
@@ -22,9 +25,14 @@ input, button {
   outline: none;
 }
 
-.options {
-  width: 450px;
+.generator {
+  max-width: 550px;
   margin: 0 auto;
+}
+
+.options {
+  width: 100%;
+  padding: 0 30px;
 }
 
 .wrapper_option label {
@@ -34,12 +42,12 @@ input, button {
 .header {
   display: grid;
   place-items: center;
-
   margin: 40px 0;
 }
 
 .header h1 span{
-  font-size: calc(30px + 1vw);
+  font-size: calc(15px + 3vw);
+  color: var(--primary)
 }
 
 .form {
@@ -47,41 +55,75 @@ input, button {
   gap: 20px;
 }
 
-.wrapper_input {
+.wrapper_input_pass, .wrapper_option {
   display: grid;
   grid-template-columns: 1fr 50px;
   gap: 20px;
 }
 
-.wrapper_input  input {
+.wrapper_input_pass input {
   text-align: center;
-  font: 400 20px poppins;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  color: #1b1b1b;
+  font: 400 18px poppins;
+  border: none;
+  border-radius: var(--radius);
+  color: #fff;
+  background: var(--secondary);
 }
 
-.wrapper_input button {
+.wrapper_input_pass input::selection {
+  background: none;
+}
+
+.wrapperInput {
+  position: relative;
+}
+
+.tooltip_copied {
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 10px;
+  color: #fff;
+  background: var(--primary);
+  border-radius: var(--radius);
+  transform: translateY(-90px) translateX(-7px);
+  z-index: 99;
+}
+
+.tooltip_copied::before {
+  content: '';
+  position: absolute;
+  left: calc(50% - 6px);
+  bottom: -5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--primary);
+  transform: rotate(45deg);
+}
+
+.wrapper_input_pass button {
   display: grid;
   place-items: center;
   height: 50px;
-  background: var(--secondary);
+  width: 100%;
+  background: var(--primary);
   border: none;
-  color: var(--primary);
-  border-radius: 5px;
+  color: var(--secondary2);
+  border-radius: var(--radius);
   cursor: pointer;
   transition: transform .4s ease;
-}.wrapper_input button:hover {
-  transform: translateY(-5px)
 }
 
-.wrapper_input button span {font-size: 24px;}
+.wrapper_input_pass button span {font-size: 24px;}
 
 .wrapper_range .numberLength {
   text-align: center;
-  font: 400 28px Poppins;
+  font: 600 28px Poppins;
   color: var(--primary);
 }
+
+/***** Range *****/
 
 .wrapper_range input {
   width: calc(100% - 10px);
@@ -112,30 +154,31 @@ input, button {
   height: 16px;
   width: 16px;
   border-radius: 99px;
-  background: #ffffff;
+  background: var(--primary);
   cursor: pointer;
-  box-shadow: 0 0px 0px 4px var(--primary);
+  box-shadow: 0 0px 0px 4px var(--secondary2);
   margin-top: -3px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
 }
 
 .wrapper_range input::-moz-range-thumb {
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #000000;
-  height: 36px;
+  -webkit-appearance: none;
+  height: 16px;
   width: 16px;
-  border-radius: 3px;
-  background: #ff0000;
+  border-radius: 99px;
+  background: var(--secondary2);
   cursor: pointer;
+  box-shadow: 0 0px 0px 4px var(--primary);
+  margin-top: -3px; 
 }
 
 .wrapper_range input::-ms-thumb {
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  border: 1px solid #000000;
-  height: 36px;
+  height: 16px;
   width: 16px;
-  border-radius: 3px;
-  background: #aa0000;
+  border-radius: 99px;
+  background: var(--secondary2);
   cursor: pointer;
+  box-shadow: 0 0px 0px 4px var(--primary);
+  margin-top: -3px; 
 }
 
 .wrapper_range input::-webkit-slider-runnable-track {
@@ -149,53 +192,134 @@ input, button {
 }
 
 .wrapper_range input::focus::-webkit-slider-runnable-track {
-  background: #e24d08;
+  background: var(--primary);
 }
 
 .wrapper_range input::-moz-range-track {
   width: 100%;
-  height: 8.4px;
+  height: 10px;
   cursor: pointer;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-  background: #bb0000;
-  border-radius: 1.3px;
-  border: 0.2px solid #010101;
+  background: var(--primary);
+  border-radius: 99px;
+  border: none;
+  box-shadow: none;
 }
 
 .wrapper_range input::-ms-track {
   width: 100%;
-  height: 8.4px;
+  height: 10px;
   cursor: pointer;
-  background: transparent;
-  border-color: transparent;
-  border-width: 16px 0;
-  color: transparent;
+  background: var(--primary);
+  border-radius: 99px;
+  border: none;
+  box-shadow: none;
 }
 .wrapper_range input::-ms-fill-lower {
-  background: #acacac;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: var(--primary);
+  border: none;
+  border-radius: 99px;
+  box-shadow: none;
 }
 .wrapper_range input:focus::-ms-fill-lower {
-  background: #ff0000;
+  background: var(--primary);
 }
 .wrapper_range input::-ms-fill-upper {
-  background: #ec0000;
-  border: 0.2px solid #010101;
-  border-radius: 2.6px;
-  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: var(--primary);
+  border: none;
+  border-radius: 99px;
+  box-shadow: none;
 }
 .wrapper_range input:focus::-ms-fill-upper {
-  background: #db0808;
+  background: var(--primary);
+}
+
+/***** Range *****/
+
+.wrapper_option {
+  margin-bottom: 20px;
+}
+
+.wrapper_option label{
+  font-weight: 600;
+  padding-left: 13px;
+  font-size: 22px;
+  color: #fff;
+}
+
+.wrapper_option .wrapper_checkbox {
+  display: grid;
+  place-items: center;
+}
+
+.wrapper_option input {
+  -webkit-appearance: none;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 99px;
+  background: var(--secondary);
+  transition: box-shadow .2s ease;
+  cursor: pointer;
+}
+
+.wrapper_option input:checked {
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.wrapper_option input::after {
+  content: '';
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-radius: 99px;
+  background: var(--primary);
+  opacity: 0;
+  transition: opacity .3s ease, width .2s linear, height .2s linear;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper_option input:checked::after {
+  opacity: 1;
+  width: 13px;
+  height: 13px;
 }
 
 .btnGenerator {
+  margin-top: 20px;
   padding: 10px;
-  font: 600 18px poppins;
-  border-radius: 5px;
+  text-transform: uppercase;
+  font: 600 22px poppins;
+  letter-spacing: 4px;
+  border-radius: var(--radius);
   border: none;
   cursor: pointer;
   color: #fff;
-  background: var(--primary)
+  background: var(--primary);
+  transition: transform .4s ease;
+}
+.btnGenerator:hover {
+  transform: translateY(-5px)
+}
+
+/***** Media Query *****/
+
+@media only screen and (max-width: 400px) {
+  .wrapper_option label{
+    font-size: 16px;
+  }
+  .options {
+    width: 100%;
+    padding: 0 15px;
+  }
+  .btnGenerator {
+    font-size: 18px;
+  }
+  .wrapper_input_pass, .wrapper_option {
+    gap: 10px;
+  }
+  .wrapper_input_pass  input {
+    font-size: 16px;
+  }
 }

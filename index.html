@@ -18,11 +18,13 @@
   <div class="generator">
     <div class="options">
       <form id='form' class='form' action="">
-        <div class="wrapper_input">
-          <input type="text" id='pass' class="password">
-          <button id='copiar'>
-            <span class="material-icons">copy_all</span>
-          </button>
+        <div class="wrapper_input_pass">
+          <input type="text" id='pass' class="password" readonly>
+          <div class="wrapper_button">
+            <button id='copiar'>
+              <span class="material-icons">copy_all</span>
+            </button>
+          </div>
         </div>
 
         <div class="wrapper_range">
@@ -33,19 +35,27 @@
         <div>
           <div class="wrapper_option">
             <label for="uppercaseLetters">Uppercase letters</label>
-            <input name='uppercaseLetters' type="checkbox" id="uppercaseLetters">
+            <div class="wrapper_checkbox">
+              <input name='uppercaseLetters' type="checkbox" id="uppercaseLetters">
+            </div>
           </div>
           <div class="wrapper_option">
             <label for="lowercaseLetters">Lowercase letters</label>
-            <input name="lowercaseLetters" type="checkbox" id="lowercaseLetters">
+            <div class="wrapper_checkbox">
+              <input name="lowercaseLetters" type="checkbox" id="lowercaseLetters">
+            </div>
           </div>
           <div class="wrapper_option">
             <label for="numbers">Numbers</label>
-            <input name='numbers' type="checkbox" id="numbers">
+            <div class="wrapper_checkbox">
+              <input name='numbers' type="checkbox" id="numbers">
+            </div>
           </div>
           <div class="wrapper_option">
             <label for="symbols">Symbols</label>
-            <input name="symbols" type="checkbox" id="symbols">
+            <div class="wrapper_checkbox">
+              <input name="symbols" type="checkbox" id="symbols">
+            </div>
           </div>
         </div>
 

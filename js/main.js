@@ -5,6 +5,7 @@
     [ ] Include numbers
     [ ] Include symbols
 */
+let tooltip;
 
 let passwordLength; // HTML parameter
 const passwordOptions = new Map();
@@ -16,8 +17,6 @@ const range = document.querySelector('#rango')
 const numberLength = document.querySelector('#numberLength')
 const form = document.querySelector('#form')
 const copy = document.querySelector('#copiar')
-
-console.log(state);
 
 state.forEach(e => {
     e.addEventListener('change', (e) => {
@@ -34,12 +33,33 @@ form.addEventListener('submit', (e) => {
 numberLength.innerHTML = range.value
 passwordLength = range.value
 
+const createTooltip = () => {
+    if(tooltip){
+        return
+    }
+    
+    tooltip = document.createElement('span')
+    tooltip.classList.add('tooltip_copied')
+    tooltip.innerText = 'Copied'
+    const wrapperInput = document.querySelector('.wrapper_button')
+    wrapperInput.appendChild(tooltip)
+    
+    setTimeout(() => {
+      tooltip.remove()
+      tooltip = false
+    }, 1000)
+}
+
 copiar.addEventListener('click', () => {
   if(!txtPass.value) {
     return
   }
-  txtPass.select();
+  txtPass.focus();
+  document.execCommand('selectAll')
   document.execCommand('copy');
+
+  createTooltip()
+  
 })
 
 const changePasswordLenght = (e) => {
@@ -123,7 +143,7 @@ btnGenerate.onclick = (e) => {
 ////////////////////////////////////////////////////////////////
 
 const typed = new Typed('.typed', {
-    strings: ['******** *********', 'Password Generator'],
+    strings: ['p4§zW0rD_g3nErAt0R', 'Password Generator'],
     typeSpeed: 55,
     startDelay: 1000,
     backSpeed: 40
